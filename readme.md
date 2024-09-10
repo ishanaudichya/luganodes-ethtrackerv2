@@ -55,6 +55,8 @@ Luganodes Ethereum Tracker is a robust and efficient system designed to monitor 
 
 ## Architecture
 
+![Arch ](/media/archi.png)
+
 The Luganodes Ethereum Tracker consists of several interconnected components:
 
 1. **Tracker Server**: Monitors the Ethereum blockchain using Alchemy API.

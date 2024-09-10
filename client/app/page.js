@@ -87,7 +87,7 @@ export default function LandingPage() {
                   Meet the Developer
                 </h2>
                 <p className="text-xl text-gray-300 mb-6">
-                  Ishan Audichya is a passionate Ethereum developer with years of experience in blockchain technology and smart contract development.
+                  Ishan Audichya 
                 </p>
                 <div className="flex space-x-4">
                   <Link href="https://github.com/ishanaudichya" target="_blank" rel="noopener noreferrer">
