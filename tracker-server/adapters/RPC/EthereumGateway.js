@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import { BlockchainGateway } from "./BlockchainGateway.js";
 
-// Implement the Ethereum-specific provider
+// ethprovider pending use alchemy - done 
 class EthereumProvider {
   constructor(config) {
     const fullRpcUrl = `${config.rpcUrl}/v2/${config.apiKey}`;
@@ -43,7 +43,7 @@ class EthereumProvider {
   }
 }
 
-// Extend the generic BlockchainGateway to create an Ethereum-specific gateway
+// use etherium for extingtgnig ughh - done
 export class EthereumGateway extends BlockchainGateway {
   constructor(config) {
     const ethereumProvider = new EthereumProvider(config);

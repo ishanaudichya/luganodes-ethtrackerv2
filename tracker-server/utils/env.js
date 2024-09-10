@@ -1,4 +1,4 @@
-//env config karna hai
+//env config
 
 import dotenv from "dotenv";
 dotenv.config();

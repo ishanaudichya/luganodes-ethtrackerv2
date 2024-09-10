@@ -1,6 +1,6 @@
 
 import { Model } from "mongoose";
-
+//mongodb addd code pending ( also store latest block number) - done ;-;
 export class DepositsRepository {
   constructor(depositsModel) {
     this.depositsModel = depositsModel;
@@ -15,13 +15,12 @@ export class DepositsRepository {
       await newDeposit.save();
     } catch (error) {
       if (error.code === 11000) {
-        // 11000 is the error code for duplicate key in MongoDB
-        console.warn("Deposit with this hash already exists:", deposit.hash);
+        console.warn("already exists", deposit.hash);
         return;
       }
 
-      console.error("Error storing deposit:", error);
-      throw error; // Rethrow the error if it's not a duplicate key error
+      console.error("Error saving db", error);
+      throw error; // 
     }
   }
 

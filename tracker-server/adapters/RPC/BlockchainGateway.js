@@ -1,6 +1,8 @@
 import sleep from "../../utils/sleep.js";
 import Redis from "ioredis";
 
+
+//ffs env is not working. fix it - 
 const redis = new Redis(`rediss://default:AVNS_gBwKVReWnzyEpmhaoP3@redis-ba5e231-audichyaishan-a4e5.a.aivencloud.com:15978`);
 
 export class BlockchainGateway {
@@ -53,7 +55,7 @@ export class BlockchainGateway {
         await sleep(backoff);
         return this.executeFetchWithRetry(fetchCallback, retries - 1, backoff * 2);
       } else {
-        console.error("System could not recover from rate limit error");
+        console.error('rate limit erro');
         throw error;
       }
     }

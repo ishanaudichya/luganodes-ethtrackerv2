@@ -14,13 +14,13 @@ export class DepositsTrackerService {
       redis.publish("notifications", message);
     }
 
-    // Send a notification
+    // Send to telegram chatbot and redis make 2 seperate gatways
     this.notificatorGateway?.sendNotification(
       `Deposits tracker service started`
     );
   }
 
-  // Process the last block's transactions in batches
+  // las block
   async processBlockTransactions(
     blockNumberOrHash = "latest"
   ) {
@@ -43,7 +43,7 @@ export class DepositsTrackerService {
         }
       }
     } catch (error) {
-      //
+      // umm
     }
   }
 
@@ -72,20 +72,19 @@ export class DepositsTrackerService {
     redis.publish("notifications", finishedMessage);
   }
 
-  // Listen to pending transactions in real-time
+  // live transaction 
   startPendingTransactionsListener() {
     this.blockchainGateway.watchPendingTransactions((tx) => {
-      // Check if tx corresponds to the public key
+      // processTransaction process 
       this.processTransaction(tx);
     });
   }
 
-  // Listen to new minted blocks in real-time
+
   startMintedBlocksListener() {
     this.blockchainGateway.watchMintedBlocks((blockNumber) => {
       this.processBlockTransactions(blockNumber);
-      // Check if tx corresponds to the public key
-      // this.processTransactions(tx);
+      
     });
   }
 
@@ -97,8 +96,7 @@ export class DepositsTrackerService {
       console.info(depositMessage);
       redis.publish("notifications", depositMessage);
 
-      // Calculate the transaction fee as the product of gas limit and gas price
-      // TODO - Check this is acurate
+    // fix ishan
       const fee = txData.gasLimit * txData.gasPrice;
 
       const deposit = {
@@ -112,18 +110,14 @@ export class DepositsTrackerService {
         token: this.blockchainGateway.token,
       };
 
-     
-
-      // Save the deposit to the storage repository
       await this.depositsRepository.storeDeposit(deposit);
-
-      // Send a notification
+    
       await this.notificatorGateway?.sendNotification(
         `Deposit processed: ${txData.hash}\n\nAmount: ${txData.value}\nFee: ${fee}\nFrom: ${txData.from}\nTo: ${txData.to}\nBlock: ${txData.blockNumber}`
       );
     } catch (error) {
       await this.notificatorGateway?.sendNotification(
-        `Error processing deposit: ${txData.hash}`
+        ` processing error deposit: ${txData.hash}`
       );
     }
   }

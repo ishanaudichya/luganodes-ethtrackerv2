@@ -1,18 +1,22 @@
 import mongoose, { Schema, Document } from "mongoose";
+// Schema of Deposit to be Saved:
+// Deposit {
+//     blockNumber;
+//     blockTimestamp;
+//     fee;
+//     hash;
+//     pubkey;
+// }
 
-// Define the Mongoose interface extending the Mongoose Document
-
-// Define the Mongoose schema based on the Zod schema
 const DepositSchema = new Schema({
   blockNumber: { type: Number, required: true },
   blockTimestamp: { type: Number, required: true },
   fee: { type: BigInt, required: false },
   hash: { type: String, required: false },
   pubkey: { type: String, required: true },
-  blockchain: { type: String, required: true },
+  blockchain: { type: String, required: true }, //remove not asked by luga claude sux
   network: { type: String, required: true },
   token: { type: String, required: true },
 });
 
-// Create and export the Mongoose model
 export const DepositModel = mongoose.model("Deposit", DepositSchema);

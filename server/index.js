@@ -13,7 +13,6 @@ const io = new Server(server, {
   }
 });
 
-// Redis connection
 const redis = new Redis(process.env.REDIS_URL);
 
 redis.subscribe('notifications', (err, count) => {
@@ -24,7 +23,6 @@ redis.subscribe('notifications', (err, count) => {
   }
 });
 
-// When a message is published on the Redis channel, broadcast it to connected clients
 redis.on('message', (channel, message) => {
   console.log(`Received data on channel ${channel}: ${message}`);
   io.emit('new_log', message);
