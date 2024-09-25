@@ -9,7 +9,7 @@ export class TelegramNotifierGateway {
 
     this.bot = new Telegraf(this.botToken);
     //take this form env  DONT COMMITTT!!!
-    this.redis = new Redis(`rediss://default:AVNS_gBwKVReWnzyEpmhaoP3@redis-ba5e231-audichyaishan-a4e5.a.aivencloud.com:15978`);
+    this.redis = new Redis(``); //add uri here
   }
 
   async sendNotification(message) {

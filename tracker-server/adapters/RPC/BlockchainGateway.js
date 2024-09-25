@@ -2,8 +2,8 @@ import sleep from "../../utils/sleep.js";
 import Redis from "ioredis";
 
 
-//ffs env is not working. fix it - 
-const redis = new Redis(`rediss://default:AVNS_gBwKVReWnzyEpmhaoP3@redis-ba5e231-audichyaishan-a4e5.a.aivencloud.com:15978`);
+//ffs env is not working. fix it - add uri here 
+const redis = new Redis(``);
 
 export class BlockchainGateway {
   constructor(config) {

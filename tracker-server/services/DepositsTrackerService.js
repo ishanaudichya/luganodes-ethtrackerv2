@@ -1,5 +1,5 @@
 import Redis from "ioredis";
-const redis = new Redis(`rediss://default:AVNS_gBwKVReWnzyEpmhaoP3@redis-ba5e231-audichyaishan-a4e5.a.aivencloud.com:15978`);
+const redis = new Redis(); // add uri here
 
 export class DepositsTrackerService {
   constructor(options) {
